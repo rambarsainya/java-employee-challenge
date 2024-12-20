@@ -114,7 +114,7 @@ public class EmployeeController implements IEmployeeController<Employee, CreateR
      * @return a ResponseEntity containing a list of the top 10 highest earning employee names
      */
     @Override
-    @GetMapping("/topTenEarning")
+    @GetMapping("/topTenHighestEarningEmployeeNames")
     public ResponseEntity<List<String>> getTopTenHighestEarningEmployeeNames() {
         logger.info("Received request to fetch top 10 highest earning employee names.");
 
