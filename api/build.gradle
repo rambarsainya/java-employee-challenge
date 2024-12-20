@@ -1,11 +1,33 @@
 plugins {
     id 'project-conventions'
+    id 'io.spring.dependency-management'
 }
 
 dependencies {
+
+    // Feign dependency
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+
+    // Jakarta validation API and Hibernate Validator
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
+    implementation 'jakarta.validation:jakarta.validation-api:3.0.0'
+
+    // Redis Cache
+    // implementation 'org.springframework.boot:spring-boot-starter-cache'
+    // implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // AOP
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 springBoot {
     mainClass = 'com.reliaquest.api.ApiApplication'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2024.0.0"
+    }
 }
