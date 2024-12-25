@@ -22,4 +22,13 @@ public class CreateRequest {
 
     @NotBlank(message = "Title is required")
     private String title;
+
+    public CreateRequest() {}
+
+    public CreateRequest(String name, Integer salary, Integer age, String title) {
+        this.name = name;
+        this.salary = salary;
+        this.age = age;
+        this.title = title;
+    }
 }
