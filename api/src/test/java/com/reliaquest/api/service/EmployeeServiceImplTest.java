@@ -25,6 +25,10 @@ import org.mockito.Mock;
 
 class EmployeeServiceImplTest {
 
+    private static final String EXPECTED_EMPLOYEE_NAME = "Rajesh";
+
+    private static final Integer EXPECTED_EMPLOYEE_SALARY = 500000;
+
     @Mock
     private EmployeeClient employeeClient;
 
@@ -56,7 +60,7 @@ class EmployeeServiceImplTest {
 
         List<Employee> employees = employeeService.getEmployees();
         assertEquals(3, employees.size());
-        assertEquals("Rajesh", employees.get(0).getEmployee_name());
+        assertEquals(EXPECTED_EMPLOYEE_NAME, employees.get(0).getEmployee_name());
     }
 
     @Test
@@ -77,7 +81,7 @@ class EmployeeServiceImplTest {
 
         Employee employee = employeeService.getEmployeeById(id);
         assertNotNull(employee);
-        assertEquals("Rajesh", employee.getEmployee_name());
+        assertEquals(EXPECTED_EMPLOYEE_NAME, employee.getEmployee_name());
     }
 
     @Test
@@ -100,7 +104,7 @@ class EmployeeServiceImplTest {
 
         Employee createdEmployee = employeeService.createEmployee(createRequest);
         assertNotNull(createdEmployee);
-        assertEquals("Rajesh", createdEmployee.getEmployee_name());
+        assertEquals(EXPECTED_EMPLOYEE_NAME, createdEmployee.getEmployee_name());
     }
 
     @Test
@@ -126,7 +130,7 @@ class EmployeeServiceImplTest {
         when(employeeClient.deleteEmployeeByName(deleteRequest)).thenReturn(mockResponse);
 
         String deletedEmployeeName = employeeService.deleteEmployeeById(id);
-        assertEquals("Rajesh", deletedEmployeeName);
+        assertEquals(EXPECTED_EMPLOYEE_NAME, deletedEmployeeName);
     }
 
     @Test
@@ -150,7 +154,7 @@ class EmployeeServiceImplTest {
 
         Optional<Integer> highestSalary = employeeService.getHighestSalaryOfEmployees();
         assertTrue(highestSalary.isPresent());
-        assertEquals(500000, highestSalary.get());
+        assertEquals(EXPECTED_EMPLOYEE_SALARY, highestSalary.get());
     }
 
     @Test
@@ -160,6 +164,6 @@ class EmployeeServiceImplTest {
 
         List<String> topEarningNames = employeeService.getTopTenHighestEarningEmployeeNames();
         assertEquals(3, topEarningNames.size());
-        assertEquals("Rajesh", topEarningNames.get(0));
+        assertEquals(EXPECTED_EMPLOYEE_NAME, topEarningNames.get(0));
     }
 }
